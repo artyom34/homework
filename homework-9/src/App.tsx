@@ -1,23 +1,23 @@
 const tasks = [
-  {
-    id: 1,
-    title: "Купить продукты на неделю",
-    isDone: false,
-  },
-  {
-    id: 2,
-    title: "Полить цветы",
-    isDone: false,
-  },
-  {
-    id: 3,
-    title: "Сходить на тренировку",
-    isDone: false,
-  },
+  { id: 1, title: "Купить продукты на неделю", isDone: false },
+  { id: 2, title: "Полить цветы", isDone: true },
+  { id: 3, title: "Сходить на тренировку", isDone: false },
 ];
 
 export function App() {
-  return <div>
-    <h1>To-do List</h1>
-  </div>;
+  return (
+    <div>
+      <h1>Список дел</h1>
+      <ul>
+        {tasks.map((task) => {
+          return (
+            <li key={task.id}>
+              <div>{task.title}</div>
+              <input type="checkbox" checked={task.isDone}></input>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
