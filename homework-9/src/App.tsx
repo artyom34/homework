@@ -1,4 +1,4 @@
-// const tasks = null;
+import { useState } from "react";
 
 const tasks = [
   {
@@ -25,6 +25,8 @@ const tasks = [
 ];
 
 export function App() {
+  const [taskId, setTaskId] = useState(0); // to avoid TS error
+
   if (tasks === null) {
     return <div>{"Loading..."}</div>;
   }
@@ -35,6 +37,8 @@ export function App() {
 
   return (
     <div>
+      <button onClick={() => setTaskId(0)}>Сбросить выдиление</button>
+
       <h1>To-do list</h1>
       <ul>
         {tasks.map((task) => {
@@ -44,8 +48,12 @@ export function App() {
               style={{
                 padding: "10px",
                 marginBottom: "10px",
-                border: "2px solid black",
+                border:
+                  task.id === taskId ? "4px solid green" : "2px solid black",
                 backgroundColor: task.priority === 2 ? "#3b1818ff" : "",
+              }}
+              onClick={() => {
+                setTaskId(task.id);
               }}
             >
               <span>Заголовок: </span>
