@@ -20,7 +20,7 @@ const employees = [
 ];
 
 const employeesWithTotal = employees.map((employee) => {
-  let percentForYear = 5;
+  const percentForYear = 5;
   let percentForExperience = employee.experience * percentForYear;
 
   return {
