@@ -59,19 +59,20 @@ function App() {
           return (
             <li
               key={task.id}
-              style={
-                task.priority === 0
-                  ? { backgroundColor: "rgba(255, 255, 255, 1)" }
-                  : task.priority === 1
-                    ? { backgroundColor: "rgba(255, 215, 181, 1)" }
-                    : task.priority === 2
-                      ? { backgroundColor: "rgba(255, 179, 138, 1)" }
-                      : task.priority === 3
-                        ? { backgroundColor: "rgba(255, 146, 72, 1)" }
-                        : task.priority === 4
-                          ? { backgroundColor: "rgba(255, 103, 0, 1)" }
-                          : ""
-              }
+              style={{
+                backgroundColor:
+                  task.priority === 0
+                    ? "rgba(255, 255, 255, 1)"
+                    : task.priority === 1
+                      ? "rgba(255, 215, 181, 1)"
+                      : task.priority === 2
+                        ? "rgba(255, 179, 138, 1)"
+                        : task.priority === 3
+                          ? "rgba(255, 146, 72, 1)"
+                          : task.priority === 4
+                            ? "rgba(255, 103, 0, 1)"
+                            : "none",
+              }}
             >
               <div>
                 Заголовок:
