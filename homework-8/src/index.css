@@ -1,0 +1,10 @@
+.main{
+    width: 300px;
+}
+hr{
+    width: 250px;
+    margin-left: -5px;
+}
+ul {
+    list-style-type: none;
+}
