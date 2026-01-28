@@ -1,8 +1,5 @@
+import { useState } from "react";
 import "./index.css";
-
-// const tasks = null;
-
-// const tasks = [];
 
 const tasks = [
   {
@@ -26,23 +23,11 @@ const tasks = [
     addedAt: "3 сентября",
     priority: 1,
   },
-  {
-    id: 4,
-    title: "Срочно отправить рабочий отчет",
-    isDone: false,
-    addedAt: "4 сентября",
-    priority: 4,
-  },
-  {
-    id: 5,
-    title: "Заплатить за коммунальные услуги",
-    isDone: false,
-    addedAt: "3 сентября",
-    priority: 3,
-  },
 ];
 
 function App() {
+  const [selectedTaskId, setSelectedTaskId] = useState(null); //useState<number | null>(null);
+
   if (tasks.length === 0) {
     return <h1>Задачи отсутствуют</h1>;
   }
@@ -52,26 +37,24 @@ function App() {
   }
 
   return (
-    <div className="main">
+    <div>
       <h1>Список дел</h1>
+      <button onClick={() => setSelectedTaskId(null)}>
+        сбросить выбранное
+      </button>
+
       <ul>
         {tasks.map((task) => {
           return (
             <li
               key={task.id}
+              onClick={() => setSelectedTaskId(task.id)}
               style={{
-                backgroundColor:
-                  task.priority === 0
-                    ? "rgba(255, 255, 255, 1)"
-                    : task.priority === 1
-                      ? "rgba(255, 215, 181, 1)"
-                      : task.priority === 2
-                        ? "rgba(255, 179, 138, 1)"
-                        : task.priority === 3
-                          ? "rgba(255, 146, 72, 1)"
-                          : task.priority === 4
-                            ? "rgba(255, 103, 0, 1)"
-                            : "none",
+                backgroundColor: task.priority === 2 ? "#e29663ff" : "none",
+                border:
+                  selectedTaskId === task.id
+                    ? "2px solid blue"
+                    : "2px solid black",
               }}
             >
               <div>
@@ -93,7 +76,6 @@ function App() {
               <div>
                 <span>Дата создания задачи:</span> {task.addedAt}
               </div>
-              <hr />
             </li>
           );
         })}
